@@ -1,0 +1,12 @@
+<%= link_to 'Create Todo', new_todo_path, class: "btn btn-primary"%>
+<% @todos.map do |todo| %>
+    <div>
+        <h1><%= todo.title %></h1>
+        <p><%= todo.description %></p>
+        <%= link_to 'View', todo_path(todo.id), class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_todo_path(todo.id), class: "btn btn-primary" %>
+    </div>
+<% end %><br>
+<% unless Todo.count.zero? %>
+    <%= link_to 'Clear All Completed', delete_completed_path, class: "btn btn-danger" %>
+<% end %>
